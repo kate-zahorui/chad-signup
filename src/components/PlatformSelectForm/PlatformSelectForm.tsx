@@ -33,8 +33,17 @@ const PlatformSelectForm: React.FunctionComponent<IProps> = ({ options }) => {
     setPlatform(value);
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setPlatform('');
+    setSelectedOption(null);
+
+    // navigate();
+  };
+
   return (
-    <form action="">
+    <form action="" onSubmit={handleSubmit}>
       <label htmlFor={platformInputId}>Platform</label>
       {isSelective ? (
         <Select

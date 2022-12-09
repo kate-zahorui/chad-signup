@@ -3,13 +3,16 @@ import { connectShopify, connectGmail, register } from './authOperations';
 import {
   IResponseShopify,
   IResponseGmail,
+  IUserData,
   IState,
 } from '../../interfaces/auth';
 
 const initialState: IState = {
+  userData: null,
   shop_token: '',
   google_token: '',
   isRegistered: false,
+  isLogin: false,
   isLoading: false,
   error: '',
 };
@@ -17,7 +20,11 @@ const initialState: IState = {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    setUserData: (state, action: PayloadAction<IUserData>) => {
+      state.userData = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       // ---------- connectShopify ----------
@@ -60,6 +67,7 @@ export const authSlice = createSlice({
       .addCase(register.fulfilled, state => {
         state.isLoading = false;
         state.isRegistered = true;
+        state.isLogin = true;
       })
       .addCase(register.rejected, (state, action: any) => {
         state.isLoading = false;
@@ -67,5 +75,7 @@ export const authSlice = createSlice({
       });
   },
 });
+
+export const { setUserData } = authSlice.actions;
 
 export default authSlice.reducer;

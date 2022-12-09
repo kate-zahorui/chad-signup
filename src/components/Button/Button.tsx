@@ -5,7 +5,7 @@ import React from 'react';
 interface IProps {
   text: string;
   type?: 'button' | 'submit';
-  // onClick?: () => void;
+  onClick?: () => void;
 }
 
 const Button: React.FunctionComponent<IProps> = ({ text, type = 'submit' }) => {

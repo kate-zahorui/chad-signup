@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 
+import { useAppDispatch } from '../../services/hooks/reduxHooks';
+import { setUserData } from '../../redux/auth/authSlice';
 import { Button } from '../';
 // import s from './SignUpForm.module.css';
 
 const SignUpForm: React.FunctionComponent = () => {
+  const dispatch = useAppDispatch();
+
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -32,8 +36,17 @@ const SignUpForm: React.FunctionComponent = () => {
     }
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(setUserData({ email, name, password }));
+    setEmail('');
+    setName('');
+    setPassword('');
+    // navigate();
+  };
+
   return (
-    <form action="">
+    <form action="" onSubmit={handleSubmit}>
       <label htmlFor={emailInputId}>Email</label>
       <input
         id={emailInputId}

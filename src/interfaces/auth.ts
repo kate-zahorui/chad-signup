@@ -18,10 +18,18 @@ export interface IResponseGmail {
   token: string;
 }
 
+export interface IUserData {
+  email: string;
+  name: string;
+  password: string;
+}
+
 export interface IState {
+  userData: IUserData | null;
   shop_token: string;
   google_token: string;
   isRegistered: boolean;
+  isLogin: boolean;
   isLoading: boolean;
   error: string;
 }

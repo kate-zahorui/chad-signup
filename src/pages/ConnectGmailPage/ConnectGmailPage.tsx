@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
+import {
+  useAppSelector,
+  useAppDispatch,
+} from '../../services/hooks/reduxHooks';
+import { connectGmail, register } from '../../redux/auth/authOperations';
 import { Logo } from '../../components';
 // import s from './ConnectGmailPage.module.css';
 
 const ConnectGmailPage: React.FunctionComponent = () => {
+  const { userData, google_token, shop_token } = useAppSelector(
+    state => state.auth
+  );
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!google_token || !userData) return;
+    const data = {
+      ...userData,
+      shop_token,
+      google_token,
+    };
+    dispatch(register(data));
+    // eslint-disable-next-line
+  }, [google_token]);
+
+  const handleBtnClick = () => {
+    dispatch(connectGmail());
+  };
+
   return (
     <main>
       <Logo />
@@ -36,7 +61,9 @@ const ConnectGmailPage: React.FunctionComponent = () => {
             </p>
           </li>
         </ul>
-        <button type="button">Connect Gmail account</button>
+        <button type="button" onClick={handleBtnClick}>
+          Connect Gmail account
+        </button>
         {/* <a href="">I don’t use Gmail</a> */}
       </section>
     </main>
