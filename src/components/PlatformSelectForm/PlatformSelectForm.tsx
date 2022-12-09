@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import Select from 'react-select';
 
@@ -18,7 +19,10 @@ const PlatformSelectForm: React.FunctionComponent<IProps> = ({ options }) => {
   const [isSelective, setIsSelective] = useState(true);
   const [platform, setPlatform] = useState('');
   const [selectedOption, setSelectedOption] = useState<IOption | null>(null);
+
   const platformInputId = nanoid();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     if (selectedOption?.value !== 'Other') return;
@@ -39,7 +43,7 @@ const PlatformSelectForm: React.FunctionComponent<IProps> = ({ options }) => {
     setPlatform('');
     setSelectedOption(null);
 
-    // navigate();
+    navigate('/response', { state: { from: location } });
   };
 
   return (

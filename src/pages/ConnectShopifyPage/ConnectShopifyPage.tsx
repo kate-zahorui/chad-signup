@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   useAppSelector,
@@ -61,7 +62,7 @@ const ConnectShopifyPage: React.FunctionComponent = () => {
               type="button"
               onClick={handleBtnClick}
             />
-            {/* <a href="">I don’t use Shopify</a> */}
+            <Link to="/no-shopify">I don’t use Shopify</Link>
           </section>
         </>
       )}

@@ -1,8 +1,9 @@
 import React from 'react';
-// import s from './SignUpPage.module.css';
+import { Link } from 'react-router-dom';
 
 import useWindowDimensions from '../../services/hooks/useWindowDimensions';
 import { Logo, SignUpForm, StepsMobile } from '../../components';
+// import s from './SignUpPage.module.css';
 
 const SignUpPage: React.FunctionComponent = () => {
   const { width } = useWindowDimensions();
@@ -20,7 +21,7 @@ const SignUpPage: React.FunctionComponent = () => {
         <SignUpForm />
         <p>
           Already have an account?
-          {/* <a href="">Login</a> */}
+          <Link to="/login">Login</Link>
         </p>
       </section>
     </main>

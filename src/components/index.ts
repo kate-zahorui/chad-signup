@@ -3,7 +3,7 @@ export { default as Container } from './Container/Container';
 export { default as LogInForm } from './LogInForm/LogInForm';
 export { default as Logo } from './Logo/Logo';
 export { default as Modal } from './Modal/Modal';
-export { default as NoMobileAccess } from './NoMobileAccess/NoMobileAccess';
+
 export { default as PlatformSelectForm } from './PlatformSelectForm/PlatformSelectForm';
 export { default as PrivateRoute } from './PrivateRoute/PrivateRoute';
 export { default as PublicRoute } from './PublicRoute/PublicRoute';

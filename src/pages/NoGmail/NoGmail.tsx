@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Logo, PlatformSelectForm } from '../../components';
 // import s from './NoGmail.module.css';
@@ -18,7 +19,7 @@ const NoGmail: React.FunctionComponent = () => {
         <PlatformSelectForm options={options} />
         <p>
           Actually use Gmail?
-          {/* <a href="">Connect</a> */}
+          <Link to="/connect-gmail">Connect</Link>
         </p>
       </section>
     </main>

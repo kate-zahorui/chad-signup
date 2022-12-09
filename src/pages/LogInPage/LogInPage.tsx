@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { LogInForm, Logo } from '../../components';
 // import s from './LogInPage.module.css';
@@ -13,7 +14,7 @@ const LogInPage: React.FunctionComponent = () => {
         <LogInForm />
         <p>
           Don’t have an account?
-          {/* <a href="">Join the waitlist</a> */}
+          <Link to="/">Join the waitlist</Link>
         </p>
       </section>
     </main>

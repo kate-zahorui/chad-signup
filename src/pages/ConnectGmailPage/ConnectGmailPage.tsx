@@ -1,18 +1,23 @@
 import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import {
   useAppSelector,
   useAppDispatch,
 } from '../../services/hooks/reduxHooks';
+import useWindowDimensions from '../../services/hooks/useWindowDimensions';
 import { connectGmail, register } from '../../redux/auth/authOperations';
+import { setIsLogin } from '../../redux/auth/authSlice';
 import { Logo } from '../../components';
 // import s from './ConnectGmailPage.module.css';
 
 const ConnectGmailPage: React.FunctionComponent = () => {
-  const { userData, google_token, shop_token } = useAppSelector(
+  const { userData, google_token, shop_token, isRegistered } = useAppSelector(
     state => state.auth
   );
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     if (!google_token || !userData) return;
@@ -24,6 +29,16 @@ const ConnectGmailPage: React.FunctionComponent = () => {
     dispatch(register(data));
     // eslint-disable-next-line
   }, [google_token]);
+
+  useEffect(() => {
+    if (!isRegistered) return;
+    if (width >= 1440) {
+      setIsLogin(true);
+    } else {
+      navigate('/');
+    }
+    // eslint-disable-next-line
+  }, [isRegistered, width]);
 
   const handleBtnClick = () => {
     dispatch(connectGmail());
@@ -64,7 +79,7 @@ const ConnectGmailPage: React.FunctionComponent = () => {
         <button type="button" onClick={handleBtnClick}>
           Connect Gmail account
         </button>
-        {/* <a href="">I don’t use Gmail</a> */}
+        <Link to="/no-gmail">I don’t use Gmail</Link>
       </section>
     </main>
   );

@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
-import { useAppDispatch } from '../../services/hooks/reduxHooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../services/hooks/reduxHooks';
 import { setUserData } from '../../redux/auth/authSlice';
 import { Button } from '../';
+
 // import s from './SignUpForm.module.css';
 
 const SignUpForm: React.FunctionComponent = () => {
+  const { userData } = useAppSelector(state => state.auth);
+
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -16,6 +24,14 @@ const SignUpForm: React.FunctionComponent = () => {
   const emailInputId = nanoid();
   const nameInputId = nanoid();
   const passwordInputId = nanoid();
+
+  // when user comes to connect another store (to enter another name)
+  useEffect(() => {
+    if (!userData) return;
+    setEmail(userData.email);
+    setName(userData.name);
+    setPassword(userData.password);
+  }, [userData]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -42,7 +58,7 @@ const SignUpForm: React.FunctionComponent = () => {
     setEmail('');
     setName('');
     setPassword('');
-    // navigate();
+    navigate('/connect-shopify');
   };
 
   return (

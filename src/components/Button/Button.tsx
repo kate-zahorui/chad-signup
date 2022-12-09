@@ -8,8 +8,16 @@ interface IProps {
   onClick?: () => void;
 }
 
-const Button: React.FunctionComponent<IProps> = ({ text, type = 'submit' }) => {
-  return <button type={type}>{text}</button>;
+const Button: React.FunctionComponent<IProps> = ({
+  text,
+  onClick,
+  type = 'submit',
+}) => {
+  return (
+    <button type={type} onClick={onClick}>
+      {text}
+    </button>
+  );
 };
 
 export default Button;

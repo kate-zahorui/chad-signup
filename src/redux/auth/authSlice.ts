@@ -24,6 +24,9 @@ export const authSlice = createSlice({
     setUserData: (state, action: PayloadAction<IUserData>) => {
       state.userData = action.payload;
     },
+    setIsLogin: (state, action: PayloadAction<boolean>) => {
+      state.isLogin = action.payload;
+    },
   },
   extraReducers: builder => {
     builder
@@ -67,7 +70,7 @@ export const authSlice = createSlice({
       .addCase(register.fulfilled, state => {
         state.isLoading = false;
         state.isRegistered = true;
-        state.isLogin = true;
+        // state.isLogin = true;
       })
       .addCase(register.rejected, (state, action: any) => {
         state.isLoading = false;
@@ -76,6 +79,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setUserData } = authSlice.actions;
+export const { setUserData, setIsLogin } = authSlice.actions;
 
 export default authSlice.reducer;

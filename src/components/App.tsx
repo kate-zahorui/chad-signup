@@ -7,6 +7,7 @@ import {
   ConnectShopifyPage,
   Home,
   LogInPage,
+  NoMobileAccess,
   NoGmail,
   NoShopify,
   Response,
@@ -26,10 +27,12 @@ const App: React.FunctionComponent = () => {
             <Route path="/no-gmail" element={<NoGmail />} />
             <Route path="/response" element={<Response />} />
             <Route path="/login" element={<LogInPage />} />
+            <Route path="/no-access" element={<NoMobileAccess />} />
           </Route>
         </Route>
         <Route element={<PrivateRoute />}>
           <Route path="/home" element={<Home />} />
+          <Route path="/no-user-access" element={<NoMobileAccess />} />
         </Route>
       </Routes>
     </div>

@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 
+import { useAppDispatch } from '../../services/hooks/reduxHooks';
+import { setIsLogin } from '../../redux/auth/authSlice';
 import { Button } from '../';
 // import s from './LogInForm.module.css';
 
 const LogInForm: React.FunctionComponent = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const dispatch = useAppDispatch();
 
   const emailInputId = nanoid();
   const passwordInputId = nanoid();
@@ -27,8 +31,16 @@ const LogInForm: React.FunctionComponent = () => {
     }
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(setIsLogin(true));
+
+    setEmail('');
+    setPassword('');
+  };
+
   return (
-    <form action="">
+    <form action="" onSubmit={handleSubmit}>
       <label htmlFor={emailInputId}>Email</label>
       <input
         id={emailInputId}
