@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import App from './components/App';
 
+import '/node_modules/modern-normalize/modern-normalize.css';
 import './index.css';
 
 const root = ReactDOM.createRoot(
