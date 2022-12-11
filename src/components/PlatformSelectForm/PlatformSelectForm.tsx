@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import Select from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 
 import { Button } from '../';
 // import s from './PlatformSelectForm.module.css';
@@ -11,37 +12,58 @@ interface IProps {
 }
 
 interface IOption {
-  value: string;
-  label: string;
+  readonly value: string;
+  readonly label: string;
 }
 
+const createOption = (label: string): IOption => ({
+  label,
+  value: label.toLowerCase().replace(/\W/g, ''),
+});
+
 const PlatformSelectForm: React.FunctionComponent<IProps> = ({ options }) => {
-  const [isSelective, setIsSelective] = useState(true);
-  const [platform, setPlatform] = useState('');
+  const [canCreate, setCanCreate] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<IOption | null>(null);
+  const [inputValue, setInputValue] = useState<string>('');
+
+  const [availableOptions, setAvailableOptions] = useState<IOption[]>(
+    options.map((i: string): IOption => createOption(i))
+  );
 
   const platformInputId = nanoid();
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Switches to <CreatableSelect/> to allow inputting a custom platform
   useEffect(() => {
-    if (selectedOption?.value !== 'Other') return;
-    setIsSelective(false);
+    if (selectedOption?.value !== 'other') return;
+
+    setCanCreate(true);
   }, [selectedOption]);
 
-  const optionsToSelect = options.map((i: string) => ({ value: i, label: i }));
+  // Sets a new created platform as a selectedOption
+  useEffect(() => {
+    if (availableOptions.length === options.length) return;
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
+    setSelectedOption(availableOptions[availableOptions.length - 1]);
+  }, [availableOptions, options]);
 
-    setPlatform(value);
+  const handleInputChange = (value: string) => {
+    setInputValue(value);
+  };
+
+  const handleCreate = (inputValue: string) => {
+    const newOption = createOption(inputValue);
+    setAvailableOptions(prev => [...prev, newOption]);
+
+    setCanCreate(false);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setPlatform('');
     setSelectedOption(null);
+    setInputValue('');
 
     navigate('/response', { state: { from: location } });
   };
@@ -49,7 +71,7 @@ const PlatformSelectForm: React.FunctionComponent<IProps> = ({ options }) => {
   return (
     <form action="" onSubmit={handleSubmit}>
       <label htmlFor={platformInputId}>Platform</label>
-      {isSelective ? (
+      {!canCreate ? (
         <Select
           // common
           id={platformInputId}
@@ -60,19 +82,26 @@ const PlatformSelectForm: React.FunctionComponent<IProps> = ({ options }) => {
           defaultValue={selectedOption}
           value={selectedOption}
           onChange={setSelectedOption}
-          options={optionsToSelect}
+          options={availableOptions}
+          // for input
+          isSearchable={false}
         />
       ) : (
-        <input
+        <CreatableSelect
+          // common
           id={platformInputId}
           name="platform"
           placeholder="Enter your platform here"
           required
-          value={platform}
-          onChange={handleInputChange}
+          // for create
+          isClearable
+          onCreateOption={handleCreate}
+          // for input
+          value={inputValue}
+          onInputChange={handleInputChange}
+          menuIsOpen={Boolean(inputValue)}
         />
       )}
-
       <Button text="Submit" />
     </form>
   );
