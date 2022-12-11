@@ -9,6 +9,8 @@ import useWindowDimensions from '../../services/hooks/useWindowDimensions';
 import { connectGmail, register } from '../../redux/auth/authOperations';
 import { setIsLogin } from '../../redux/auth/authSlice';
 import { Logo } from '../../components';
+
+import svg from '../../images/sprite.svg';
 // import s from './ConnectGmailPage.module.css';
 
 const ConnectGmailPage: React.FunctionComponent = () => {
@@ -77,6 +79,9 @@ const ConnectGmailPage: React.FunctionComponent = () => {
           </li>
         </ul>
         <button type="button" onClick={handleBtnClick}>
+          <svg width="18" height="18">
+            <use href={`${svg}#icon-gmail`}></use>
+          </svg>
           Connect Gmail account
         </button>
         <Link to="/no-gmail">I don’t use Gmail</Link>

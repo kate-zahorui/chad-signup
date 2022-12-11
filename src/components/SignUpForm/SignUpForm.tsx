@@ -9,6 +9,7 @@ import {
 import { setUserData } from '../../redux/auth/authSlice';
 import { Button } from '../';
 
+import svg from '../../images/sprite.svg';
 // import s from './SignUpForm.module.css';
 
 const SignUpForm: React.FunctionComponent = () => {
@@ -84,15 +85,23 @@ const SignUpForm: React.FunctionComponent = () => {
         onChange={handleInputChange}
       />
       <label htmlFor={passwordInputId}>Password</label>
-      <input
-        id={passwordInputId}
-        type="text"
-        name="password"
-        placeholder="Enter password"
-        required
-        value={password}
-        onChange={handleInputChange}
-      />
+
+      <div>
+        <input
+          id={passwordInputId}
+          type="text"
+          name="password"
+          placeholder="Enter password"
+          required
+          value={password}
+          onChange={handleInputChange}
+        />
+        <button>
+          <svg width="16" height="16">
+            <use href={`${svg}#icon-eye`}></use>
+          </svg>
+        </button>
+      </div>
       <Button text="Create account" />
     </form>
   );
