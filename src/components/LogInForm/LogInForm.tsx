@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
+import { IconButton, InputLabel, OutlinedInput } from '@mui/material';
 
 import { useAppDispatch } from '../../services/hooks/reduxHooks';
 import { setIsLogin } from '../../redux/auth/authSlice';
-import { Button } from '../';
+import { Btn } from '../';
+
+import svg from '../../images/sprite.svg';
 // import s from './LogInForm.module.css';
 
 const LogInForm: React.FunctionComponent = () => {
@@ -41,8 +44,8 @@ const LogInForm: React.FunctionComponent = () => {
 
   return (
     <form action="" onSubmit={handleSubmit}>
-      <label htmlFor={emailInputId}>Email</label>
-      <input
+      <InputLabel htmlFor={emailInputId}>Email</InputLabel>
+      <OutlinedInput
         id={emailInputId}
         type="email"
         name="email"
@@ -52,17 +55,24 @@ const LogInForm: React.FunctionComponent = () => {
         onChange={handleInputChange}
       />
 
-      <label htmlFor={passwordInputId}>Password</label>
-      <input
-        id={passwordInputId}
-        type="text"
-        name="password"
-        placeholder="Enter password"
-        required
-        value={password}
-        onChange={handleInputChange}
-      />
-      <Button text="Login" />
+      <InputLabel htmlFor={passwordInputId}>Password</InputLabel>
+      <div>
+        <OutlinedInput
+          id={passwordInputId}
+          type="text"
+          name="password"
+          placeholder="Enter password"
+          required
+          value={password}
+          onChange={handleInputChange}
+        />
+        <IconButton aria-label="password">
+          <svg width="16" height="16">
+            <use href={`${svg}#icon-eye`}></use>
+          </svg>
+        </IconButton>
+      </div>
+      <Btn text="Login" />
     </form>
   );
 };

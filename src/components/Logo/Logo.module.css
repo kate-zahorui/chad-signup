@@ -1,0 +1,17 @@
+.logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.logo__icon {
+  margin-right: 2px;
+}
+
+.logo__text {
+  color: var(--logo-color);
+  /* font */
+  font-family: 'Eudoxus Sans';
+  font-size: 24px;
+  line-height: 1.33;
+}

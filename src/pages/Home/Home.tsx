@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 
 import useWindowDimensions from '../../services/hooks/useWindowDimensions';
 
-// import s from './Home.module.css';
-
 const Home: React.FunctionComponent = () => {
   const { width } = useWindowDimensions();
 

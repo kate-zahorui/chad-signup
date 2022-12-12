@@ -1,0 +1,26 @@
+.title {
+  margin-bottom: 16px;
+  color: var(--logo-color);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1;
+  text-align: center;
+}
+
+.text {
+  margin-bottom: 32px;
+  color: var(--text-color);
+  font-size: 14px;
+  text-align: center;
+}
+
+.link {
+  margin-top: 16px;
+  color: #464a53;
+  font-size: 12px;
+  text-align: center;
+}
+
+.link__accent {
+  color: var(--accent-color);
+}

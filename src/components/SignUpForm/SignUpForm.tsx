@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import { IconButton, InputLabel, OutlinedInput } from '@mui/material';
 
 import {
   useAppDispatch,
   useAppSelector,
 } from '../../services/hooks/reduxHooks';
 import { setUserData } from '../../redux/auth/authSlice';
-import { Button } from '../';
+import { Btn } from '../';
 
 import svg from '../../images/sprite.svg';
-// import s from './SignUpForm.module.css';
+import s from './SignUpForm.module.css';
 
 const SignUpForm: React.FunctionComponent = () => {
   const { userData } = useAppSelector(state => state.auth);
@@ -64,8 +65,10 @@ const SignUpForm: React.FunctionComponent = () => {
 
   return (
     <form action="" onSubmit={handleSubmit}>
-      <label htmlFor={emailInputId}>Email</label>
-      <input
+      <InputLabel htmlFor={emailInputId} className={s.label}>
+        Email
+      </InputLabel>
+      <OutlinedInput
         id={emailInputId}
         type="email"
         name="email"
@@ -73,9 +76,12 @@ const SignUpForm: React.FunctionComponent = () => {
         required
         value={email}
         onChange={handleInputChange}
+        className={s.input}
       />
-      <label htmlFor={nameInputId}>Your name</label>
-      <input
+      <InputLabel htmlFor={nameInputId} className={s.label}>
+        Your name
+      </InputLabel>
+      <OutlinedInput
         id={nameInputId}
         type="text"
         name="name"
@@ -83,26 +89,30 @@ const SignUpForm: React.FunctionComponent = () => {
         required
         value={name}
         onChange={handleInputChange}
+        className={s.input}
       />
-      <label htmlFor={passwordInputId}>Password</label>
+      <InputLabel htmlFor={passwordInputId} className={s.label}>
+        Password
+      </InputLabel>
 
-      <div>
-        <input
+      <div className={s.passwordBox}>
+        <OutlinedInput
           id={passwordInputId}
-          type="text"
+          type="password"
           name="password"
           placeholder="Enter password"
           required
           value={password}
           onChange={handleInputChange}
+          className={s.input}
         />
-        <button>
+        <IconButton aria-label="password" className={s.passwordBtn}>
           <svg width="16" height="16">
             <use href={`${svg}#icon-eye`}></use>
           </svg>
-        </button>
+        </IconButton>
       </div>
-      <Button text="Create account" />
+      <Btn text="Create account" />
     </form>
   );
 };

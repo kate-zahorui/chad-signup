@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { List } from '@mui/material';
 
 import {
   useAppSelector,
@@ -8,10 +9,9 @@ import {
 import useWindowDimensions from '../../services/hooks/useWindowDimensions';
 import { connectGmail, register } from '../../redux/auth/authOperations';
 import { setIsLogin } from '../../redux/auth/authSlice';
-import { Logo } from '../../components';
+import { BtnGmail, BenefitsItem, ContentPaper, Logo } from '../../components';
 
-import svg from '../../images/sprite.svg';
-// import s from './ConnectGmailPage.module.css';
+import s from './ConnectGmailPage.module.css';
 
 const ConnectGmailPage: React.FunctionComponent = () => {
   const { userData, google_token, shop_token, isRegistered } = useAppSelector(
@@ -47,46 +47,45 @@ const ConnectGmailPage: React.FunctionComponent = () => {
   };
 
   return (
-    <main>
+    <ContentPaper>
       <Logo />
       <section>
-        <h2>Connect your customer support email</h2>
-        <p>
+        <h2 className={s.title}>Connect your customer support email</h2>
+        <p className={s.text}>
           Allows Chad to send automated responses on your behalf from your usual
           support mailbox
         </p>
-        <ul>
-          <li>
-            <h3>Contextual responses</h3>
-            <p>
+        <List className={s.list}>
+          <BenefitsItem>
+            <h3 className={s.item__title}>Contextual responses</h3>
+            <p className={s.item__text}>
               Custom responses to any support situation from “where’s my stuff?”
               to “I want a refund”
             </p>
-          </li>
-          <li>
-            <h3>Reply from anywhere</h3>
-            <p>
+          </BenefitsItem>
+          <BenefitsItem>
+            <h3 className={s.item__title}>Reply from anywhere</h3>
+            <p className={s.item__text}>
               Respond to your customers via email or Chad chat—it’s all saved in
               the same thread
             </p>
-          </li>
-          <li>
-            <h3>Categorical inbox tags</h3>
-            <p>
+          </BenefitsItem>
+          <BenefitsItem>
+            <h3 className={s.item__title}>Categorical inbox tags</h3>
+            <p className={s.item__text}>
               Tags your emails by category so you know what to expect before
               even opening an email
             </p>
-          </li>
-        </ul>
-        <button type="button" onClick={handleBtnClick}>
-          <svg width="18" height="18">
-            <use href={`${svg}#icon-gmail`}></use>
-          </svg>
-          Connect Gmail account
-        </button>
-        <Link to="/no-gmail">I don’t use Gmail</Link>
+          </BenefitsItem>
+        </List>
+
+        <BtnGmail type="button" onClick={handleBtnClick} />
+
+        <div className={s.link}>
+          <Link to="/no-gmail">I don’t use Gmail</Link>
+        </div>
       </section>
-    </main>
+    </ContentPaper>
   );
 };
 

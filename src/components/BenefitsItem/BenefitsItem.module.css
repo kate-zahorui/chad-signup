@@ -1,0 +1,23 @@
+li.list__item {
+  display: flex;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.list__item:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.list__item::before {
+  content: '';
+  display: inline-block;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+
+  margin-right: 12px;
+  background-image: url('../../images/check-icon.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50% 50%;
+}

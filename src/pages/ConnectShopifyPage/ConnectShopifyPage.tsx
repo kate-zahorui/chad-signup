@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { List } from '@mui/material';
 
 import {
   useAppSelector,
   useAppDispatch,
 } from '../../services/hooks/reduxHooks';
 import { connectShopify } from '../../redux/auth/authOperations';
-import { Button, Logo, StoreConnected } from '../../components';
-// import s from './ConnectShopifyPage.module.css';
+import {
+  BenefitsItem,
+  Btn,
+  ContentPaper,
+  Logo,
+  StoreConnected,
+} from '../../components';
+import s from './ConnectShopifyPage.module.css';
 
 const ConnectShopifyPage: React.FunctionComponent = () => {
   const { userData, shop_token } = useAppSelector(state => state.auth);
@@ -25,48 +32,49 @@ const ConnectShopifyPage: React.FunctionComponent = () => {
   };
 
   return (
-    <main>
+    <ContentPaper>
       {isConnected ? (
         <StoreConnected />
       ) : (
         <>
           <Logo />
           <section>
-            <h2>Connect your Shopify store</h2>
-            <p>
+            <h2 className={s.title}>Connect your Shopify store</h2>
+            <p className={s.text}>
               Installs the Chad widget in your Shopify store and sets it up to
               display your customers’ order information and self-serve options.
             </p>
-            <ul>
-              <li>
-                <h3>Track orders and shipping</h3>
-                <p>Global coverage with 600+ couriers supported</p>
-              </li>
-              <li>
-                <h3>Manage orders</h3>
-                <p>
+            <List className={s.list}>
+              <BenefitsItem>
+                <h3 className={s.item__title}>Track orders and shipping</h3>
+                <p className={s.item__text}>
+                  Global coverage with 600+ couriers supported
+                </p>
+              </BenefitsItem>
+              <BenefitsItem>
+                <h3 className={s.item__title}>Manage orders</h3>
+                <p className={s.item__text}>
                   Allow customers to track, return, exchange, or report problems
                   with their orders
                 </p>
-              </li>
-              <li>
-                <h3>Process returns and exchanges</h3>
-                <p>
+              </BenefitsItem>
+              <BenefitsItem>
+                <h3 className={s.item__title}>Process returns and exchanges</h3>
+                <p className={s.item__text}>
                   Automatically checks your store policy and existing inventory
                   before resolving or escalating each request
                 </p>
-              </li>
-            </ul>
-            <Button
-              text="Connect store"
-              type="button"
-              onClick={handleBtnClick}
-            />
-            <Link to="/no-shopify">I don’t use Shopify</Link>
+              </BenefitsItem>
+            </List>
+
+            <Btn text="Connect store" type="button" onClick={handleBtnClick} />
+            <div className={s.link}>
+              <Link to="/no-shopify">I don’t use Shopify</Link>
+            </div>
           </section>
         </>
       )}
-    </main>
+    </ContentPaper>
   );
 };
 

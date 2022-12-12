@@ -4,8 +4,8 @@ import { nanoid } from 'nanoid';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 
-import { Button } from '../';
-// import s from './PlatformSelectForm.module.css';
+import { Btn } from '../';
+import s from './PlatformSelectForm.module.css';
 
 interface IProps {
   options: string[];
@@ -78,6 +78,7 @@ const PlatformSelectForm: React.FunctionComponent<IProps> = ({ options }) => {
           name="platform"
           placeholder="Select platform"
           required
+          className={s.select}
           // for select
           defaultValue={selectedOption}
           value={selectedOption}
@@ -93,6 +94,7 @@ const PlatformSelectForm: React.FunctionComponent<IProps> = ({ options }) => {
           name="platform"
           placeholder="Enter your platform here"
           required
+          className={s.select}
           // for create
           isClearable
           onCreateOption={handleCreate}
@@ -102,7 +104,7 @@ const PlatformSelectForm: React.FunctionComponent<IProps> = ({ options }) => {
           menuIsOpen={Boolean(inputValue)}
         />
       )}
-      <Button text="Submit" />
+      <Btn text="Submit" />
     </form>
   );
 };

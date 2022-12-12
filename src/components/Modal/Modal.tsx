@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '../';
+import { Btn } from '../';
 
 // import s from './Modal.module.css';
 
@@ -24,7 +24,7 @@ const Modal: React.FunctionComponent = () => {
           <p>
             Lastly, <b>nothing is live until you hit “Go Live”!</b>
           </p>
-          <Button text="Start customizing" type="button" />
+          <Btn text="Start customizing" type="button" />
         </section>
       </div>
     </div>

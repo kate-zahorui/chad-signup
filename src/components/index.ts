@@ -1,13 +1,17 @@
-export { default as Button } from './Button/Button';
-export { default as Container } from './Container/Container';
+export { default as BenefitsItem } from './BenefitsItem/BenefitsItem';
+export { default as Btn } from './Btn/Btn';
+export { default as BtnGmail } from './BtnGmail/BtnGmail';
+export { default as ContentContainer } from './ContentContainer/ContentContainer';
+export { default as ContentPaper } from './ContentPaper/ContentPaper';
 export { default as LogInForm } from './LogInForm/LogInForm';
 export { default as Logo } from './Logo/Logo';
 export { default as Modal } from './Modal/Modal';
-
+export { default as NavigationButton } from './NavigationButton/NavigationButton';
 export { default as PlatformSelectForm } from './PlatformSelectForm/PlatformSelectForm';
 export { default as PrivateRoute } from './PrivateRoute/PrivateRoute';
 export { default as PublicRoute } from './PublicRoute/PublicRoute';
 export { default as SharedPublicLayout } from './SharedPublicLayout/SharedPublicLayout';
+export { default as SidebarPagination } from './SidebarPagination/SidebarPagination';
 export { default as SignUpForm } from './SignUpForm/SignUpForm';
 export { default as StepsMobile } from './StepsMobile/StepsMobile';
 export { default as StepsSidebar } from './StepsSidebar/StepsSidebar';

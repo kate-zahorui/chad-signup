@@ -1,0 +1,16 @@
+.main {
+  flex-grow: 1;
+  padding: 0;
+}
+
+@media screen and (min-width: 834px) {
+  .main {
+    padding: 132px 147px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .main {
+    padding: 132px 196px;
+  }
+}

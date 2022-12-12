@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { LogInForm, Logo } from '../../components';
+import { ContentPaper, LogInForm, Logo } from '../../components';
 // import s from './LogInPage.module.css';
 
 const LogInPage: React.FunctionComponent = () => {
   return (
-    <main>
+    <ContentPaper>
       <Logo />
       <section>
         <h2>Welcome back</h2>
@@ -17,7 +17,7 @@ const LogInPage: React.FunctionComponent = () => {
           <Link to="/">Join the waitlist</Link>
         </p>
       </section>
-    </main>
+    </ContentPaper>
   );
 };
 

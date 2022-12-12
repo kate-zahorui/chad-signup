@@ -1,7 +1,5 @@
 import React from 'react';
 
-// import s from './StepsMobile.module.css';
-
 const StepsMobile: React.FunctionComponent = () => {
   return (
     <div>

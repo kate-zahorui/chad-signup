@@ -1,0 +1,12 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.item {
+  height: 8px;
+  width: 8px;
+  color: var(--secondary-color);
+  background-color: var(--secondary-color);
+  font-size: 6px;
+}
