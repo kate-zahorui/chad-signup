@@ -35,9 +35,9 @@ const ConnectGmailPage: React.FunctionComponent = () => {
   useEffect(() => {
     if (!isRegistered) return;
     if (width >= 1440) {
-      setIsLogin(true);
+      dispatch(setIsLogin(true));
     } else {
-      navigate('/');
+      navigate('/no-access');
     }
     // eslint-disable-next-line
   }, [isRegistered, width]);
