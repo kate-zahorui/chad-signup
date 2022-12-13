@@ -1,5 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { ToastContainer, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { PrivateRoute, PublicRoute, SharedPublicLayout } from './';
 import {
@@ -35,6 +37,13 @@ const App: React.FunctionComponent = () => {
           <Route path="/no-user-access" element={<NoMobileAccess />} />
         </Route>
       </Routes>
+      <ToastContainer
+        autoClose={2000}
+        hideProgressBar
+        position="top-right"
+        theme="colored"
+        transition={Zoom}
+      />
     </div>
   );
 };
