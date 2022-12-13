@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useWindowDimensions from '../../services/hooks/useWindowDimensions';
+import { Modal } from '../../components';
 
 const Home: React.FunctionComponent = () => {
   const { width } = useWindowDimensions();
@@ -14,7 +15,12 @@ const Home: React.FunctionComponent = () => {
     }
   }, [width, navigate]);
 
-  return <main>Home</main>;
+  return (
+    <main>
+      <h1>Home</h1>
+      <Modal />
+    </main>
+  );
 };
 
 export default Home;

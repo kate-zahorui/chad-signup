@@ -8,7 +8,7 @@ import {
 } from '../../services/hooks/reduxHooks';
 import useWindowDimensions from '../../services/hooks/useWindowDimensions';
 import { connectGmail, register } from '../../redux/auth/authOperations';
-import { setIsLogin } from '../../redux/auth/authSlice';
+import { setIsLogin, setIsModalShown } from '../../redux/auth/authSlice';
 import { BtnGmail, BenefitsItem, ContentPaper, Logo } from '../../components';
 
 import s from './ConnectGmailPage.module.css';
@@ -36,6 +36,7 @@ const ConnectGmailPage: React.FunctionComponent = () => {
     if (!isRegistered) return;
     if (width >= 1440) {
       dispatch(setIsLogin(true));
+      dispatch(setIsModalShown(true));
     } else {
       navigate('/no-access');
     }

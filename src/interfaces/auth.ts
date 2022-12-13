@@ -32,4 +32,5 @@ export interface IState {
   isLogin: boolean;
   isLoading: boolean;
   error: string;
+  isModalShown: boolean;
 }

@@ -15,6 +15,7 @@ const initialState: IState = {
   isLogin: false,
   isLoading: false,
   error: '',
+  isModalShown: false,
 };
 
 export const authSlice = createSlice({
@@ -26,6 +27,9 @@ export const authSlice = createSlice({
     },
     setIsLogin: (state, action: PayloadAction<boolean>) => {
       state.isLogin = action.payload;
+    },
+    setIsModalShown: (state, action: PayloadAction<boolean>) => {
+      state.isModalShown = action.payload;
     },
   },
   extraReducers: builder => {
@@ -79,6 +83,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setUserData, setIsLogin } = authSlice.actions;
+export const { setUserData, setIsLogin, setIsModalShown } = authSlice.actions;
 
 export default authSlice.reducer;
