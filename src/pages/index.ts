@@ -1,6 +1,7 @@
 export { default as ConnectGmailPage } from './ConnectGmailPage/ConnectGmailPage';
 export { default as ConnectShopifyPage } from './ConnectShopifyPage/ConnectShopifyPage';
 export { default as Home } from './Home/Home';
+export { default as LoaderPage } from './LoaderPage/LoaderPage';
 export { default as LogInPage } from './LogInPage/LogInPage';
 export { default as NoMobileAccess } from '../pages/NoMobileAccess/NoMobileAccess';
 export { default as NoGmail } from './NoGmail/NoGmail';

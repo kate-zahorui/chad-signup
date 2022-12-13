@@ -3,6 +3,7 @@ export { default as Btn } from './Btn/Btn';
 export { default as BtnGmail } from './BtnGmail/BtnGmail';
 export { default as ContentContainer } from './ContentContainer/ContentContainer';
 export { default as ContentPaper } from './ContentPaper/ContentPaper';
+export { default as Loader } from './Loader/Loader';
 export { default as LogInForm } from './LogInForm/LogInForm';
 export { default as Logo } from './Logo/Logo';
 export { default as Modal } from './Modal/Modal';
